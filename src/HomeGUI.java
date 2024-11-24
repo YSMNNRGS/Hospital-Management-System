@@ -43,96 +43,112 @@ public class HomeGUI extends JFrame {
 		setContentPane(background);
 		background.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Home");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\home.png"));
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel.setBounds(453, 23, 117, 48);
-		background.add(lblNewLabel);
+		JLabel homeTitle = new JLabel("Home");
+		homeTitle.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\home.png"));
+		homeTitle.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		homeTitle.setBounds(453, 23, 117, 48);
+		background.add(homeTitle);
 		
-		JButton btnNewButton = new JButton("LOGOUT");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton logoutBtn = new JButton("LOGOUT");
+        logoutBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+		logoutBtn.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		logoutBtn.setBounds(901, 24, 106, 30);
+		background.add(logoutBtn);
+		
+		JLabel titleText = new JLabel("Patient");
+		titleText.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\patient.png"));
+		titleText.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		titleText.setBounds(49, 63, 153, 43);
+		background.add(titleText);
+		
+		JLabel patientDetails = new JLabel("Patient Details");
+		patientDetails.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details.png"));
+		patientDetails.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		patientDetails.setBounds(49, 413, 243, 48);
+		background.add(patientDetails);
+		
+		JButton AdminBtn = new JButton("Admin");
+		AdminBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\admin.png"));
+		AdminBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		AdminBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		btnNewButton.setBounds(901, 24, 106, 30);
-		background.add(btnNewButton);
+		AdminBtn.setBounds(102, 173, 160, 43);
+		background.add(AdminBtn);
 		
-		JLabel lblNewLabel_1 = new JLabel("Patient");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\patient.png"));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblNewLabel_1.setBounds(49, 63, 153, 43);
-		background.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Patient Details");
-		lblNewLabel_1_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details.png"));
-		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblNewLabel_1_1.setBounds(49, 413, 243, 48);
-		background.add(lblNewLabel_1_1);
-		
-		JButton btnNewButton_1 = new JButton("Admin");
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\admin.png"));
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton updateInfoBtn = new JButton("Update/Delete Info");
+		updateInfoBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\update.png"));
+		updateInfoBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		updateInfoBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(102, 173, 160, 43);
-		background.add(btnNewButton_1);
+		updateInfoBtn.setBounds(357, 173, 243, 43);
+		background.add(updateInfoBtn);
 		
-		JButton btnNewButton_1_1 = new JButton("Update/Delete Info");
-		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\update.png"));
-		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1_1.addActionListener(new ActionListener() {
+		JButton treatmentBtn = new JButton("Treatment");
+		treatmentBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\treatment.png"));
+		treatmentBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		treatmentBtn.setBounds(678, 173, 198, 43);
+		background.add(treatmentBtn);
+		
+		JButton DischargedBtn = new JButton("Discharge");
+		DischargedBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\Dischanrge.png"));
+		DischargedBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		DischargedBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1.setBounds(357, 173, 243, 43);
-		background.add(btnNewButton_1_1);
+		DischargedBtn.setBounds(102, 300, 179, 43);
+		background.add(DischargedBtn);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Treatment");
-		btnNewButton_1_1_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\treatment.png"));
-		btnNewButton_1_1_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1_1_1.setBounds(678, 173, 198, 43);
-		background.add(btnNewButton_1_1_1);
+		JButton searchBtn = new JButton("Search Record");
+		searchBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\search.png"));
+		searchBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		searchBtn.setBounds(368, 300, 232, 43);
+		background.add(searchBtn);
 		
-		JButton btnNewButton_1_1_2 = new JButton("Discharge");
-		btnNewButton_1_1_2.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\Dischanrge.png"));
-		btnNewButton_1_1_2.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1_1_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
+		JButton RoomBtn = new JButton("Room Entry");
+		RoomBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\roomEntry.png"));
+		RoomBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		RoomBtn.setBounds(678, 300, 198, 43);
+		background.add(RoomBtn);
+		
+		JButton BillBtn = new JButton("Bill");
+		BillBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\bill.png"));
+		BillBtn.setFont(new Font("Times New Roman", Font.BOLD, 23));
+		BillBtn.setBounds(153, 492, 167, 81);
+		BillBtn.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        // Open the BillingSystemGUI page when clicked
+		        BillingSystemGUI billingSystemFrame = new BillingSystemGUI();
+		        billingSystemFrame.setVisible(true);
+		    }
 		});
-		btnNewButton_1_1_2.setBounds(102, 300, 179, 43);
-		background.add(btnNewButton_1_1_2);
+		background.add(BillBtn);
+
+		JButton recordsBtn = new JButton("Record Details");
+		recordsBtn.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        // Open the PatientDetail page when clicked
+		        PatientDetail patientDetailFrame = new PatientDetail();
+		        patientDetailFrame.setVisible(true);
+		    }
+		});
+
+		recordsBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details2.png"));
+		recordsBtn.setFont(new Font("Times New Roman", Font.BOLD, 23));
+		recordsBtn.setBounds(678, 495, 232, 74);
+		background.add(recordsBtn);
 		
-		JButton btnNewButton_1_1_2_1 = new JButton("Search Record");
-		btnNewButton_1_1_2_1.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\search.png"));
-		btnNewButton_1_1_2_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1_1_2_1.setBounds(368, 300, 232, 43);
-		background.add(btnNewButton_1_1_2_1);
-		
-		JButton btnNewButton_1_1_2_2 = new JButton("Room Entry");
-		btnNewButton_1_1_2_2.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\roomEntry.png"));
-		btnNewButton_1_1_2_2.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnNewButton_1_1_2_2.setBounds(678, 300, 198, 43);
-		background.add(btnNewButton_1_1_2_2);
-		
-		JButton btnNewButton_2 = new JButton("Bill");
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\bill.png"));
-		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		btnNewButton_2.setBounds(153, 492, 167, 81);
-		background.add(btnNewButton_2);
-		
-		JButton btnNewButton_1_1_2_3 = new JButton("Record Details");
-		btnNewButton_1_1_2_3.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details2.png"));
-		btnNewButton_1_1_2_3.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		btnNewButton_1_1_2_3.setBounds(678, 495, 232, 74);
-		background.add(btnNewButton_1_1_2_3);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\home.png"));
-		lblNewLabel_2.setBounds(0, 0, 1035, 675);
-		background.add(lblNewLabel_2);
+		JLabel backgroundPic = new JLabel("");
+		backgroundPic.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\HomePage.png"));
+		backgroundPic.setBounds(0, 0, 1035, 675);
+		background.add(backgroundPic);
 	}
 }

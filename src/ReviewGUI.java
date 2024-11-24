@@ -5,6 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -76,24 +79,36 @@ public class ReviewGUI extends JFrame {
 		btnLogout.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnLogout.setBounds(864, 10, 85, 21);
 		contentPane.add(btnLogout);
+        btnLogout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 		
 		JLabel title = new JLabel("Share your Feedback and Opinion");
 		title.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		title.setBounds(365, 68, 389, 70);
 		contentPane.add(title);
 		
-		JButton home = new JButton("Home");
-		home.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		home.setBounds(92, 10, 85, 21);
-		contentPane.add(home);
+		JButton HomeBtn = new JButton("Home");
+		HomeBtn.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		HomeBtn.setBounds(92, 10, 85, 21);
+		contentPane.add(HomeBtn);
+		 HomeBtn.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                // Close the current AddPatientGUI window
+	                ReviewGUI.this.dispose();
+
+	                // Open the HomeGUI window
+	                HomeGUI homeFrame = new HomeGUI();
+	                homeFrame.setVisible(true);
+	            }
+	        });
+	        
 		
-		JButton retrun = new JButton("Return");
-		retrun.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		retrun.setBounds(187, 10, 85, 21);
-		contentPane.add(retrun);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Untitled design (1)\\thankyou.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\ReviewPage.png"));
 		lblNewLabel.setBounds(10, 0, 1120, 695);
 		contentPane.add(lblNewLabel);
 	}

@@ -7,7 +7,7 @@ public class BillingSystemGUI {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Hospital Billing System");
         frame.getContentPane().setFont(new Font("Times New Roman", Font.BOLD, 14));
-        frame.setSize(1055, 779); // Increase window size for new field
+        frame.setSize(1055, 779); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null); // Set absolute layout
         
@@ -18,10 +18,10 @@ public class BillingSystemGUI {
         	}
         });
         
-        JLabel lblNewLabel_1 = new JLabel("Billing System");
-        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 32));
-        lblNewLabel_1.setBounds(394, 52, 238, 64);
-        frame.getContentPane().add(lblNewLabel_1);
+        JLabel titleHeader = new JLabel("Billing System");
+        titleHeader.setFont(new Font("Times New Roman", Font.BOLD, 32));
+        titleHeader.setBounds(394, 52, 238, 64);
+        frame.getContentPane().add(titleHeader);
         btnNext.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnNext.setBounds(831, 20, 95, 30);
         frame.getContentPane().add(btnNext);
@@ -37,12 +37,22 @@ public class BillingSystemGUI {
         btnReturn.setBounds(153, 14, 81, 30);
         frame.getContentPane().add(btnReturn);
         
-        JButton btnNewButton = new JButton("Home");
-        btnNewButton.setBackground(new Color(255, 255, 255));
-        btnNewButton.setForeground(new Color(0, 0, 0));
-        btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        btnNewButton.setBounds(25, 14, 95, 30);
-        frame.getContentPane().add(btnNewButton);
+        JButton HomeBtn = new JButton("Home");
+        HomeBtn.setBackground(new Color(255, 255, 255));
+        HomeBtn.setForeground(new Color(0, 0, 0));
+        HomeBtn.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        HomeBtn.setBounds(25, 14, 81, 30);
+        frame.getContentPane().add(HomeBtn);
+        HomeBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Close the current AddPatientGUI window
+                //BillingSystemGUI.this.dispose();
+
+                // Open the HomeGUI window
+                HomeGUI homeFrame = new HomeGUI();
+                homeFrame.setVisible(true);
+            }
+        });
 
         // Patient ID
         JLabel lblPatientID = new JLabel("Patient ID:");
@@ -105,7 +115,7 @@ public class BillingSystemGUI {
         btnCalculate.setForeground(new Color(0, 0, 0));
         btnCalculate.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\calculate.png"));
         btnCalculate.setFont(new Font("Times New Roman", Font.BOLD, 16));
-        btnCalculate.setBounds(634, 568, 166, 43);
+        btnCalculate.setBounds(425, 594, 166, 43);
         btnCalculate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,37 +130,23 @@ public class BillingSystemGUI {
             }
         });
         frame.getContentPane().add(btnCalculate);
-
-        // Update Button
-        JButton btnUpdate = new JButton("Update");
-        btnUpdate.setForeground(new Color(0, 0, 0));
-        btnUpdate.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\update.png"));
-        btnUpdate.setFont(new Font("Times New Roman", Font.BOLD, 16));
-        btnUpdate.setBounds(195, 568, 130, 43);
-        btnUpdate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Reset fields for new input
-                txtPatientID.setText("");
-                txtPatientName.setText("");
-                txtServiceCost.setText("");
-                txtMedicationCost.setText("");
-                txtTotalCost.setText(""); // Optional: reset total cost field as well
-            }
-        });
-        frame.getContentPane().add(btnUpdate);
         
-        JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Untitled design (1)\\payment.png"));
-        lblNewLabel.setBounds(-8, 7, 1039, 725);
-        frame.getContentPane().add(lblNewLabel);
+        JLabel background = new JLabel("");
+        background.setForeground(new Color(255, 255, 255));
+        background.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        background.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\appointment.png"));
+        background.setBounds(-8, 7, 1039, 725);
+        frame.getContentPane().add(background);
 
-        // Center the window on the screen
+      
         frame.setLocationRelativeTo(null);
 
         // Set the window visible
         frame.setVisible(true);
     }
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 }
