@@ -28,7 +28,7 @@ public class AddPatientGUI extends JFrame implements ActionListener {
     private JPanel contentPane;
     private JTextField recieveName;
     private JTextField recieveCNIC;
-    private JTextField recieveAge;
+    private JTextField recieveDOB;
     private JTextField recieveGender;
     private JTextField recieveContact;
     private JTextField recieveHistory;
@@ -56,30 +56,26 @@ public class AddPatientGUI extends JFrame implements ActionListener {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        
+
         JLabel gender = new JLabel("Gender");
         gender.setFont(new Font("Times New Roman", Font.BOLD, 23));
         gender.setBounds(490, 356, 95, 21);
         contentPane.add(gender);
-        
-        JButton returnBtn = new JButton("Return");
-        returnBtn.setFont(new Font("Times New Roman", Font.BOLD, 11));
-        returnBtn.setBounds(154, 21, 85, 21);
-        contentPane.add(returnBtn);
-        
+
         JButton HomeBtn = new JButton("Home");
+        HomeBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\home-Icon.png"));
         HomeBtn.setFont(new Font("Times New Roman", Font.BOLD, 11));
         HomeBtn.setBounds(47, 21, 85, 21);
         contentPane.add(HomeBtn);
         HomeBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 AddPatientGUI.this.dispose();
+                // Assuming HomeGUI is another frame to navigate back
                 HomeGUI homeFrame = new HomeGUI();
                 homeFrame.setVisible(true);
             }
         });
 
-        // Initialize text fields
         recieveName = new JTextField();
         recieveName.setBounds(633, 178, 146, 33);
         contentPane.add(recieveName);
@@ -90,10 +86,10 @@ public class AddPatientGUI extends JFrame implements ActionListener {
         recieveCNIC.setBounds(633, 235, 146, 33);
         contentPane.add(recieveCNIC);
 
-        recieveAge = new JTextField();
-        recieveAge.setColumns(10);
-        recieveAge.setBounds(633, 289, 146, 33);
-        contentPane.add(recieveAge);
+        recieveDOB = new JTextField();
+        recieveDOB.setColumns(10);
+        recieveDOB.setBounds(633, 289, 146, 33);
+        contentPane.add(recieveDOB);
 
         recieveGender = new JTextField();
         recieveGender.setColumns(10);
@@ -110,57 +106,48 @@ public class AddPatientGUI extends JFrame implements ActionListener {
         recieveHistory.setBounds(633, 464, 221, 105);
         contentPane.add(recieveHistory);
 
-        // Create save button
         JButton save = new JButton("Save");
+        save.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\save.png"));
         save.setBackground(new Color(255, 255, 255));
-        save.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\save.png"));
         save.setFont(new Font("Times New Roman", Font.BOLD, 18));
         save.setBounds(628, 602, 134, 44);
         contentPane.add(save);
 
-        // Table setup
-        String[] columnNames = {"Name", "DoB", "Admission Date"};
+        // Adjusted table setup
+        String[] columnNames = {"Name", "Date of Birth"};
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(28, 115, 452, 518);
         contentPane.add(scrollPane);
 
-        // Add ActionListener to the save button
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Check if any field is empty
                 if (recieveName.getText().trim().isEmpty() || recieveCNIC.getText().trim().isEmpty() ||
-                    recieveAge.getText().trim().isEmpty() || recieveGender.getText().trim().isEmpty() ||
+                    recieveDOB.getText().trim().isEmpty() || recieveGender.getText().trim().isEmpty() ||
                     recieveContact.getText().trim().isEmpty() || recieveHistory.getText().trim().isEmpty()) {
                     JOptionPane.showMessageDialog(AddPatientGUI.this, "Enter all data!");
                 } else {
-                    // Create a new patient
                     Patient newPatient = new Patient(
                         recieveName.getText(),
                         recieveCNIC.getText(),
-                        recieveAge.getText(),
+                        recieveDOB.getText(),
                         recieveGender.getText(),
                         recieveContact.getText(),
-                        recieveHistory.getText()
+                        recieveHistory.getText(), null
                     );
                     patientsList.add(newPatient);
 
-                    // Show success message
                     JOptionPane.showMessageDialog(AddPatientGUI.this, "Data added successfully!");
 
-                    // Clear the fields after saving
                     recieveName.setText("");
                     recieveCNIC.setText("");
-                    recieveAge.setText("");
+                    recieveDOB.setText("");
                     recieveGender.setText("");
                     recieveContact.setText("");
                     recieveHistory.setText("");
 
-                    // Update the table
                     updatePatientTable();
-
-                    // Save patient data to the file
                     savePatientToFile(newPatient);
                 }
             }
@@ -176,16 +163,10 @@ public class AddPatientGUI extends JFrame implements ActionListener {
         contact.setBounds(490, 402, 126, 33);
         contentPane.add(contact);
 
-        // Add combo box for gender selection (M, F, Neither)
-        JComboBox<String> genderComboBox = new JComboBox<>(new String[]{"M", "F", "Neither"});
-        genderComboBox.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-        genderComboBox.setBounds(633, 346, 146, 33);
-        contentPane.add(genderComboBox);
-
-        JLabel age = new JLabel("Date of Birth:");
-        age.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        age.setBounds(490, 291, 133, 25);
-        contentPane.add(age);
+        JLabel DoB = new JLabel("Date of Birth:");
+        DoB.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        DoB.setBounds(490, 291, 133, 25);
+        contentPane.add(DoB);
 
         JLabel cnic = new JLabel("CNIC:");
         cnic.setFont(new Font("Times New Roman", Font.BOLD, 23));
@@ -198,41 +179,28 @@ public class AddPatientGUI extends JFrame implements ActionListener {
         contentPane.add(name);
 
         JLabel title = new JLabel("Add Patient");
-        title.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\addPatient.png"));
+        title.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\addPatient.png"));
         title.setFont(new Font("Times New Roman", Font.BOLD, 40));
-        title.setBounds(516, 67, 283, 44);
+        title.setBounds(545, 63, 283, 44);
         contentPane.add(title);
         
-        JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\AddPatient.png"));
-        lblNewLabel.setBounds(10, -2, 995, 667);
-        contentPane.add(lblNewLabel);
+        JLabel background = new JLabel("");
+        background.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\AddPatientPage.png"));
+        background.setBounds(7, 6, 996, 659);
+        contentPane.add(background);
     }
 
-    // Update patient table
     private void updatePatientTable() {
-        // Clear the table model
         tableModel.setRowCount(0);
-
-        // Get today's date in the same format
-        String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
-        // Loop through the patients list and add them to the table
         for (Patient patient : patientsList) {
             Object[] row = {
-                patient.getName(),
-                patient.getCnic(),
-                patient.getAge(),
-                patient.getGender(),
-                patient.getContact(),
-                patient.getHistory(),
-                patient.getAdmissionDate()
+                patient.getName(),   // "Date of Birth" column contains Name
+                patient.getAge()     // "Name" column contains Date of Birth
             };
             tableModel.addRow(row);
         }
     }
 
-    // Save patient data to file
     private void savePatientToFile(Patient patient) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("savedPatients.txt", true))) {
             writer.write(patient.getName() + "|" +

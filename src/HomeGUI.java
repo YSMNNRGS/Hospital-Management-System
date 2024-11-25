@@ -4,16 +4,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 public class HomeGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel background;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -36,119 +37,154 @@ public class HomeGUI extends JFrame {
 	 */
 	public HomeGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1049, 722);
-		background = new JPanel();
-		background.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setBounds(100, 100, 994, 705);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(background);
-		background.setLayout(null);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton logoutBtn = new JButton("Logout");
+		logoutBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\logout-Icon.png"));
+		logoutBtn.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		logoutBtn.setBounds(836, 41, 99, 37);
+		logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+			
+		});
+		contentPane.add(logoutBtn);
 		
 		JLabel homeTitle = new JLabel("Home");
-		homeTitle.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\home.png"));
-		homeTitle.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		homeTitle.setBounds(453, 23, 117, 48);
-		background.add(homeTitle);
-		
-		JButton logoutBtn = new JButton("LOGOUT");
-        logoutBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-		logoutBtn.setFont(new Font("Times New Roman", Font.BOLD, 13));
-		logoutBtn.setBounds(901, 24, 106, 30);
-		background.add(logoutBtn);
+		homeTitle.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\home.png"));
+		homeTitle.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		homeTitle.setBounds(418, 27, 163, 56);
+		contentPane.add(homeTitle);
 		
 		JLabel titleText = new JLabel("Patient");
-		titleText.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\patient.png"));
-		titleText.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		titleText.setBounds(49, 63, 153, 43);
-		background.add(titleText);
+		titleText.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\patient.png"));
+		titleText.setFont(new Font("Times New Roman", Font.BOLD, 27));
+		titleText.setBounds(25, 68, 198, 58);
+		contentPane.add(titleText);
 		
-		JLabel patientDetails = new JLabel("Patient Details");
-		patientDetails.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details.png"));
-		patientDetails.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		patientDetails.setBounds(49, 413, 243, 48);
-		background.add(patientDetails);
+		JLabel patientDetails = new JLabel("Patient Detials");
+		patientDetails.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\details.png"));
+		patientDetails.setFont(new Font("Times New Roman", Font.BOLD, 27));
+		patientDetails.setBounds(36, 404, 262, 61);
+		contentPane.add(patientDetails);
 		
 		JButton AdminBtn = new JButton("Admin");
-		AdminBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\admin.png"));
+		AdminBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\admin.png"));
 		AdminBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		AdminBtn.setBounds(99, 163, 148, 51);
 		AdminBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				JOptionPane.showMessageDialog(null, "Only admin can access, restricted access", "Restricted Access", JOptionPane.WARNING_MESSAGE);
+	        }
 		});
-		AdminBtn.setBounds(102, 173, 160, 43);
-		background.add(AdminBtn);
 		
-		JButton updateInfoBtn = new JButton("Update/Delete Info");
-		updateInfoBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\update.png"));
-		updateInfoBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		updateInfoBtn.addActionListener(new ActionListener() {
+		contentPane.add(AdminBtn);
+		
+		
+		JButton addPatientBtn = new JButton("Add Patient");
+		addPatientBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\addPatient.png"));
+		addPatientBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		addPatientBtn.setBounds(351, 163, 189, 48);
+		addPatientBtn.addActionListener(new ActionListener() {
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				HomeGUI.this.dispose();
+				AddPatientGUI addPatient = new AddPatientGUI();
+				addPatient.setVisible(true);
 			}
+			
 		});
-		updateInfoBtn.setBounds(357, 173, 243, 43);
-		background.add(updateInfoBtn);
+		contentPane.add(addPatientBtn);
 		
-		JButton treatmentBtn = new JButton("Treatment");
-		treatmentBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\treatment.png"));
-		treatmentBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		treatmentBtn.setBounds(678, 173, 198, 43);
-		background.add(treatmentBtn);
-		
-		JButton DischargedBtn = new JButton("Discharge");
-		DischargedBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\Dischanrge.png"));
-		DischargedBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		DischargedBtn.addActionListener(new ActionListener() {
+		JButton DocScgeduleBtn = new JButton("Doctor's Schedule");
+		DocScgeduleBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\DoctorsSchedule.png"));
+		DocScgeduleBtn.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		DocScgeduleBtn.setBounds(631, 163, 209, 48);
+		DocScgeduleBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DoctorScheduleGUI docSchedule = new DoctorScheduleGUI();
+				docSchedule.setVisible(true);
 			}
 		});
-		DischargedBtn.setBounds(102, 300, 179, 43);
-		background.add(DischargedBtn);
+		contentPane.add(DocScgeduleBtn);
 		
-		JButton searchBtn = new JButton("Search Record");
-		searchBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\search.png"));
-		searchBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		searchBtn.setBounds(368, 300, 232, 43);
-		background.add(searchBtn);
+		JButton availableStuffBtn = new JButton("Available Stuff");
+		availableStuffBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\availableStuff.png"));
+		availableStuffBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		availableStuffBtn.setBounds(633, 306, 212, 37);
+		availableStuffBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DoctorListGUI docList = new DoctorListGUI();
+				docList.setVisible(true);
+			}
+			
+		});
+		contentPane.add(availableStuffBtn);
 		
-		JButton RoomBtn = new JButton("Room Entry");
-		RoomBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\roomEntry.png"));
-		RoomBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		RoomBtn.setBounds(678, 300, 198, 43);
-		background.add(RoomBtn);
+		JButton UpdateInfoBtn = new JButton("Update/Delete");
+		UpdateInfoBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\update.png"));
+		UpdateInfoBtn.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		UpdateInfoBtn.setBounds(351, 307, 209, 36);
+		UpdateInfoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(null, "Your information will be updated/deleted", "Success", JOptionPane.WARNING_MESSAGE);
+
+            }
+			
+		});
+		contentPane.add(UpdateInfoBtn);
+		
+		JButton ReviewBtn = new JButton("Review");
+		ReviewBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\review.png"));
+		ReviewBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		ReviewBtn.setBounds(99, 306, 166, 43);
+		ReviewBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReviewGUI reviewFrame = new ReviewGUI();
+				reviewFrame.setVisible(true);
+				
+			}
+			
+		});
+		contentPane.add(ReviewBtn);
+		
 		
 		JButton BillBtn = new JButton("Bill");
-		BillBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\bill.png"));
-		BillBtn.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		BillBtn.setBounds(153, 492, 167, 81);
+		BillBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\bill.png"));
+		BillBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		BillBtn.setBounds(109, 507, 172, 63);
 		BillBtn.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        // Open the BillingSystemGUI page when clicked
-		        BillingSystemGUI billingSystemFrame = new BillingSystemGUI();
-		        billingSystemFrame.setVisible(true);
-		    }
+			public void actionPerformed(ActionEvent e) {
+				BillingSystemGUI billFrame = new BillingSystemGUI();
+				billFrame.setVisible(true);
+			}
 		});
-		background.add(BillBtn);
-
+		contentPane.add(BillBtn);
+		
 		JButton recordsBtn = new JButton("Record Details");
+		recordsBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\details2.png"));
+		recordsBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		recordsBtn.setBounds(664, 507, 213, 66);
 		recordsBtn.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        // Open the PatientDetail page when clicked
-		        PatientDetail patientDetailFrame = new PatientDetail();
-		        patientDetailFrame.setVisible(true);
-		    }
+			public void actionPerformed(ActionEvent e) {
+				PatientDetail detailFrame = new PatientDetail();
+				detailFrame.setVisible(true);
+			}
 		});
-
-		recordsBtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\details2.png"));
-		recordsBtn.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		recordsBtn.setBounds(678, 495, 232, 74);
-		background.add(recordsBtn);
+		contentPane.add(recordsBtn);
 		
 		JLabel backgroundPic = new JLabel("");
-		backgroundPic.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\HomePage.png"));
-		backgroundPic.setBounds(0, 0, 1035, 675);
-		background.add(backgroundPic);
+		backgroundPic.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\HomePage.png"));
+		backgroundPic.setBounds(0, 0, 970, 658);
+		contentPane.add(backgroundPic);
 	}
 }

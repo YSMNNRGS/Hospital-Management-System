@@ -82,6 +82,7 @@ public class AddAppointment extends JFrame {
         }
 
         JButton HomeBtn = new JButton("Home");
+        HomeBtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\home-Icon.png"));
         HomeBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
         HomeBtn.setBounds(10, 0, 112, 34);
         contentPane.add(HomeBtn);
@@ -97,13 +98,13 @@ public class AddAppointment extends JFrame {
         });
 
         JButton Discardbtn = new JButton("Discard");
-        Discardbtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\Discard.png"));
+        Discardbtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\Discard.png"));
         Discardbtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
         Discardbtn.setBounds(262, 374, 140, 48);
         contentPane.add(Discardbtn);
 
         JButton Savebtn = new JButton("Save");
-        Savebtn.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital System related icons - png\\save.png"));
+        Savebtn.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\save.png"));
         Savebtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
         Savebtn.setBounds(501, 374, 132, 48);
         contentPane.add(Savebtn);
@@ -180,13 +181,14 @@ public class AddAppointment extends JFrame {
         Patientid.setBounds(148, 151, 132, 34);
         contentPane.add(Patientid);
 
-        JLabel AddAppointment = new JLabel("ADD APPOINTMENT");
+        JLabel AddAppointment = new JLabel("Add Appointment");
+        AddAppointment.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\appointment1.png"));
         AddAppointment.setFont(new Font("Times New Roman", Font.BOLD, 40));
         AddAppointment.setBounds(279, 81, 422, 48);
         contentPane.add(AddAppointment);
 
         JLabel Diplay = new JLabel("");
-        Diplay.setIcon(new ImageIcon("C:\\Users\\nargi\\Downloads\\Hospital-Management-backgrounds-icons\\appointment.png"));
+        Diplay.setIcon(new ImageIcon("C:\\Users\\Yasmine nargis\\eclipse-workspace\\HospitalManagementSystem\\resources\\appointmentPage.png"));
         Diplay.setBounds(0, 10, 1038, 696);
         contentPane.add(Diplay);
     }
